@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import './App.css'
 
-const Laskuri = (props) => {
+const Laskuri = ({ huomio }) => {
 
     const [luku, setLuku] = useState(0)
 
@@ -14,7 +14,7 @@ const Laskuri = (props) => {
             <button onClick={() => setLuku(luku + 1)}>+</button>
             <br />
             <br />
-            <button onClick={props.huomio}>HUOMIO</button>
+            <button onClick={huomio}>HUOMIO</button>
             <br />
             <br />
         </>

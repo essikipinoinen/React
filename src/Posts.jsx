@@ -4,6 +4,7 @@ import './App.css'
 const Posts = () => {
 
     const [posts, setPosts] = useState([])
+    const [showPosts, setShowPosts] = useState(false)
 
     useEffect(() => {
         fetch("https://jsonplaceholder.typicode.com/posts")
@@ -14,10 +15,10 @@ const Posts = () => {
 
     return (
         <>
-            <h2>Posts from Typicode</h2>
+            <h2 onClick={() => setShowPosts(!showPosts)}>Posts from Typicode</h2>
 
             {
-                posts && posts.map(p =>
+                showPosts && posts && posts.map(p =>
                     <div className='posts' key={p.id}>
                         <h4>Käyttäjä: {p.userId}</h4>
                         <h3>Postaus {p.id}: {p.title}</h3>

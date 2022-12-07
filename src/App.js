@@ -3,6 +3,7 @@ import Laskuri from './laskuri'
 import Viesti from './viesti'
 import React, { useState } from 'react'
 import Posts from './Posts'
+import CustomerList from './CustomerList'
 
 
 const App = () => {
@@ -16,6 +17,8 @@ const App = () => {
   return (
     <div className="App">
       <h1>Hello from React!</h1>
+
+      <CustomerList />
 
       <Posts />
 

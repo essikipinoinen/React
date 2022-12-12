@@ -3,12 +3,17 @@ import CustomerService from './services/Customer'
 import './App.css'
 import Customer from './Customer'
 import CustomerAdd from './CustomerAdd'
+import CustomerEdit from './CustomerEdit'
 
-const CustomerList = () => {
+
+const CustomerList = ({ setIsPositive, setMessage, setShowMessage }) => {
 
     const [customers, setCustomers] = useState([])
     const [showCustomers, setShowCustomers] = useState(false)
+    const [muokkaustila, setMuokkaustila] = useState(false)
     const [lisäystila, setLisäystila] = useState(false)
+    const [reload, reloadNow] = useState(false)
+    const [muokattavaCustomer, setMuokattavaCustomer] = useState(false)
 
 
     useEffect(() => {
@@ -16,8 +21,13 @@ const CustomerList = () => {
             .then(data => {
                 setCustomers(data)
             })
-    }, [lisäystila]
+    }, [lisäystila, reload, muokkaustila]
     )
+
+    const editCustomer = (customer) => {
+        setMuokattavaCustomer(customer)
+        setMuokkaustila(true)
+    }
 
     return (
         <>
@@ -26,11 +36,18 @@ const CustomerList = () => {
 
                 {!lisäystila && <button className='nappi' onClick={() => setLisäystila(true)}>Lisää uusi</button>}</h1>
 
-            {lisäystila && <CustomerAdd setLisäystila={setLisäystila} />}
+            {lisäystila && <CustomerAdd setLisäystila={setLisäystila}
+                setIsPositive={setIsPositive} setMessage={setMessage} setShowMessage={setShowMessage} />}
 
+            {muokkaustila && <CustomerEdit setMuokkaustila={setMuokkaustila}
+                setIsPositive={setIsPositive} setMessage={setMessage} setShowMessage={setShowMessage}
+                muokattavaCustomer={muokattavaCustomer}
+            />}
             {
                 showCustomers && customers && customers.map(c => (
-                    <Customer key={c.customerId} customer={c} />
+                    <Customer key={c.customerId} customer={c} reloadNow={reloadNow} reload={reload}
+                        setIsPositive={setIsPositive} setMessage={setMessage} setShowMessage={setShowMessage}
+                        editCustomer={editCustomer} />
                 )
                 )
             }

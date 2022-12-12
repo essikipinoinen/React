@@ -2,25 +2,25 @@ import React, { useState } from 'react'
 import CustomerService from './services/Customer'
 import './App.css'
 
-const CustomerAdd = ({ setLisäystila, setIsPositive, setMessage, setShowMessage }) => {
+const CustomerEdit = ({ setMuokkaustila, setIsPositive, setMessage, setShowMessage, muokattavaCustomer }) => {
 
-    const [newCustomerId, setNewCustomerId] = useState('')
-    const [newCompanyName, setNewCompanyName] = useState('')
-    const [newContactName, setNewContactName] = useState('')
-    const [newContactTitle, setNewContactTitle] = useState('')
+    const [newCustomerId, setNewCustomerId] = useState(muokattavaCustomer.customerId)
+    const [newCompanyName, setNewCompanyName] = useState(muokattavaCustomer.companyName)
+    const [newContactName, setNewContactName] = useState(muokattavaCustomer.contactName)
+    const [newContactTitle, setNewContactTitle] = useState(muokattavaCustomer.contactTitle)
 
-    const [newCountry, setNewCountry] = useState('')
-    const [newAddress, setNewAddress] = useState('')
-    const [newCity, setNewCity] = useState('')
+    const [newCountry, setNewCountry] = useState(muokattavaCustomer.country)
+    const [newAddress, setNewAddress] = useState(muokattavaCustomer.address)
+    const [newCity, setNewCity] = useState(muokattavaCustomer.city)
 
-    const [newPostalCode, setNewPostalCode] = useState('')
-    const [newPhone, setNewPhone] = useState('')
-    const [newFax, setNewFax] = useState('')
+    const [newPostalCode, setNewPostalCode] = useState(muokattavaCustomer.postalCode)
+    const [newPhone, setNewPhone] = useState(muokattavaCustomer.phone)
+    const [newFax, setNewFax] = useState(muokattavaCustomer.fax)
 
     const handleSubmit = (event) => {
         event.preventDefault()
         var newCustomer = {
-            customerId: newCustomerId.toUpperCase(),
+            customerId: newCustomerId,
             companyName: newCompanyName,
             contactName: newContactName,
             contactTitle: newContactTitle,
@@ -32,10 +32,10 @@ const CustomerAdd = ({ setLisäystila, setIsPositive, setMessage, setShowMessage
             fax: newFax
         }
 
-        CustomerService.create(newCustomer)
+        CustomerService.update(newCustomer)
             .then(response => {
                 if (response.status === 200) {
-                    setMessage("Uusi asiaks lisätty: " + newCustomer.companyName)
+                    setMessage("Asiakasta " + newCustomer.companyName + " muokattu")
                     setIsPositive(true)
                     setShowMessage(true)
 
@@ -43,7 +43,7 @@ const CustomerAdd = ({ setLisäystila, setIsPositive, setMessage, setShowMessage
                         setShowMessage(false)
                     }, 3000)
 
-                    setLisäystila(false)
+                    setMuokkaustila(false)
                 }
 
             })
@@ -55,18 +55,17 @@ const CustomerAdd = ({ setLisäystila, setIsPositive, setMessage, setShowMessage
                 setTimeout(() => {
                     setShowMessage(false)
                 }, 6000)
-            })   
+            })
     }
 
 
     return (
-        <div id="addNew">
-            <h2>Asiakkaan lisäys</h2>
+        <div id="edit">
+            <h2>Asiakkaan muokkaus</h2>
 
             <form onSubmit={handleSubmit}>
                 <div>
-                    <input type="text" value={newCustomerId} placeholder="ID (5 isoa kirjainta)" maxLength="5" minLength="5"
-                        onChange={({ target }) => setNewCustomerId(target.value)} required />
+                    <input type="text" value={newCustomerId} disabled />
                 </div>
                 <div>
                     <input type="text" value={newCompanyName} placeholder="Yrityksen nimi"
@@ -106,11 +105,11 @@ const CustomerAdd = ({ setLisäystila, setIsPositive, setMessage, setShowMessage
                 </div>
 
                 <input type='submit' value='Tallenna' />
-                <input type='button' value='Takaisin' onClick={() => setLisäystila(false)} />
+                <input type='button' value='Takaisin' onClick={() => setMuokkaustila(false)} />
             </form>
         </div>
     )
 }
 
 
-export default CustomerAdd
+export default CustomerEdit

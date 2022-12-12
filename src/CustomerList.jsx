@@ -2,23 +2,31 @@ import React, { useState, useEffect } from 'react'
 import CustomerService from './services/Customer'
 import './App.css'
 import Customer from './Customer'
+import CustomerAdd from './CustomerAdd'
 
 const CustomerList = () => {
 
     const [customers, setCustomers] = useState([])
     const [showCustomers, setShowCustomers] = useState(false)
+    const [lisäystila, setLisäystila] = useState(false)
+
 
     useEffect(() => {
         CustomerService.getAll()
             .then(data => {
                 setCustomers(data)
             })
-    }, []
+    }, [lisäystila]
     )
 
     return (
         <>
-            <h2 onClick={() => setShowCustomers(!showCustomers)}>Customers</h2>
+            <h1><nobr style={{ cursor: 'pointer' }}
+                onClick={() => setShowCustomers(!showCustomers)}>Asiakkaat</nobr>
+
+                {!lisäystila && <button className='nappi' onClick={() => setLisäystila(true)}>Lisää uusi</button>}</h1>
+
+            {lisäystila && <CustomerAdd setLisäystila={setLisäystila} />}
 
             {
                 showCustomers && customers && customers.map(c => (

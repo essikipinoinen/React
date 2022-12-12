@@ -9,12 +9,12 @@ const Laskuri = ({ huomio }) => {
         <>
 
             <h3>{luku}</h3>
-            <button onClick={() => setLuku(luku - 1)}>-</button>
-            <button onClick={() => setLuku(0)}>NOLLAA</button>
-            <button onClick={() => setLuku(luku + 1)}>+</button>
+            <button className='nappi' onClick={() => setLuku(luku - 1)}>-</button>
+            <button className='nappi' onClick={() => setLuku(0)}>Nollaa</button>
+            <button className='nappi' onClick={() => setLuku(luku + 1)}>+</button>
             <br />
             <br />
-            <button onClick={huomio}>HUOMIO</button>
+            <button className='nappi' onClick={huomio}>HUOMIO</button>
             <br />
             <br />
         </>

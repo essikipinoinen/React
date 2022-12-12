@@ -16,15 +16,15 @@ const App = () => {
 
   return (
     <div className="App">
-      <h1>Hello from React!</h1>
+      <h1>Heippa Reactista!</h1>
 
       <CustomerList />
 
       <Posts />
 
       {showLaskuri && <Laskuri huomio={huomio}/>}
-      {!showLaskuri && <button onClick={() => setShowLaskuri(!showLaskuri)}>Näytä laskuri</button>}
-      {showLaskuri && <button onClick={() => setShowLaskuri(!showLaskuri)}>Piilota laskuri</button>}
+      {!showLaskuri && <button className='nappi' onClick={() => setShowLaskuri(!showLaskuri)}>Näytä laskuri</button>}
+      {showLaskuri && <button className='nappi' onClick={() => setShowLaskuri(!showLaskuri)}>Piilota laskuri</button>}
 
       <Viesti teksti="Tervehdys App -komponentista!" />
 

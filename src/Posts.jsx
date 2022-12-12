@@ -15,7 +15,7 @@ const Posts = () => {
 
     return (
         <>
-            <h2 onClick={() => setShowPosts(!showPosts)}>Posts from Typicode</h2>
+            <h2 onClick={() => setShowPosts(!showPosts)}>Julkaisut Typicodesta</h2>
 
             {
                 showPosts && posts && posts.map(p =>

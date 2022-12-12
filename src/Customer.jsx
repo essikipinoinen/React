@@ -14,23 +14,24 @@ const Customer = ({ customer }) => {
             </h4>
 
             {showDetails && <div className='customerDetails'>
-                <table>
+                <h3>{customer.companyName}</h3>
+                <table className='table'>
                     <thead>
                         <tr>
-                            <th>Contact Person</th>
-                            <th>Phone</th>
-                            <th>Address</th>
-                            <th>City</th>
-                            <th>Country</th>
+                            <th className='thtd'>Contact Person</th>
+                            <th className='thtd'>Phone</th>
+                            <th className='thtd'>Address</th>
+                            <th className='thtd'>City</th>
+                            <th className='thtd'>Country</th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr>
-                            <td>{customer.contactName}</td>
-                            <td>{customer.phone}</td>
-                            <td>{customer.address}</td>
-                            <td>{customer.city}</td>
-                            <td>{customer.country}</td>
+                            <td className='thtd'>{customer.contactName}</td>
+                            <td className='thtd'>{customer.phone}</td>
+                            <td className='thtd'>{customer.address}</td>
+                            <td className='thtd'>{customer.city}</td>
+                            <td className='thtd'>{customer.country}</td>
                         </tr>
                     </tbody>
                 </table>

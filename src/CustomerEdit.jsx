@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import CustomerService from './services/Customer'
 import './App.css'
 
+
 const CustomerEdit = ({ setMuokkaustila, setIsPositive, setMessage, setShowMessage, muokattavaCustomer }) => {
 
     const [newCustomerId, setNewCustomerId] = useState(muokattavaCustomer.customerId)
@@ -15,7 +16,6 @@ const CustomerEdit = ({ setMuokkaustila, setIsPositive, setMessage, setShowMessa
 
     const [newPostalCode, setNewPostalCode] = useState(muokattavaCustomer.postalCode)
     const [newPhone, setNewPhone] = useState(muokattavaCustomer.phone)
-    const [newFax, setNewFax] = useState(muokattavaCustomer.fax)
 
     const handleSubmit = (event) => {
         event.preventDefault()
@@ -29,7 +29,6 @@ const CustomerEdit = ({ setMuokkaustila, setIsPositive, setMessage, setShowMessa
             city: newCity,
             postalCode: newPostalCode,
             phone: newPhone,
-            fax: newFax
         }
 
         CustomerService.update(newCustomer)
@@ -63,49 +62,54 @@ const CustomerEdit = ({ setMuokkaustila, setIsPositive, setMessage, setShowMessa
         <div id="edit">
             <h2>Asiakkaan muokkaus</h2>
 
-            <form onSubmit={handleSubmit}>
-                <div>
-                    <input type="text" value={newCustomerId} disabled />
+            <form className='editForm' onSubmit={handleSubmit}>
+                <div id="editOne">
+                    <label>Yrityksen ID</label>
+                    <input id="inputTeksti" type="text" value={newCustomerId} disabled />
                 </div>
-                <div>
-                    <input type="text" value={newCompanyName} placeholder="Yrityksen nimi"
+                <div id="editOne">
+                    <label>Yrityksen nimi</label>
+                    <input id="inputTeksti" type="text" value={newCompanyName} placeholder="Yrityksen nimi"
                         onChange={({ target }) => setNewCompanyName(target.value)} required />
                 </div>
-                <div>
-                    <input type="text" value={newContactName} placeholder="Kontaktin nimi"
+                <div id="editOne">
+                    <label>Kontaktin nimi</label>
+                    <input id="inputTeksti" type="text" value={newContactName} placeholder="Kontaktin nimi"
                         onChange={({ target }) => setNewContactName(target.value)} />
                 </div>
-                <div>
-                    <input type="text" value={newContactTitle} placeholder="Kontaktin titteli"
+                <div id="editOne">
+                    <label>Kontaktin titteli</label>
+                    <input id="inputTeksti" type="text" value={newContactTitle} placeholder="Kontaktin titteli"
                         onChange={({ target }) => setNewContactTitle(target.value)} />
                 </div>
-                <div>
-                    <input type="text" value={newCountry} placeholder="Maa"
+                <div id="editOne">
+                    <label>Maa</label>
+                    <input id="inputTeksti" type="text" value={newCountry} placeholder="Maa"
                         onChange={({ target }) => setNewCountry(target.value)} />
                 </div>
-                <div>
-                    <input type="text" value={newAddress} placeholder="Oosite"
+                <div id="editOne">
+                    <label>Osoite</label>
+                    <input id="inputTeksti" type="text" value={newAddress} placeholder="Osoite"
                         onChange={({ target }) => setNewAddress(target.value)} />
                 </div>
-                <div>
-                    <input type="text" value={newCity} placeholder="Kaupunki"
+                <div id="editOne">
+                    <label>Kaupunki</label>
+                    <input id="inputTeksti" type="text" value={newCity} placeholder="Kaupunki"
                         onChange={({ target }) => setNewCity(target.value)} />
                 </div>
-                <div>
-                    <input type="text" value={newPostalCode} placeholder="Postinumero"
+                <div id="editOne">
+                    <label>Postinumero</label>
+                    <input id="inputTeksti" type="text" value={newPostalCode} placeholder="Postinumero"
                         onChange={({ target }) => setNewPostalCode(target.value)} />
                 </div>
-                <div>
-                    <input type="text" value={newPhone} placeholder="Puhelin"
+                <div id="editOne">
+                    <label>Puhelin</label>
+                    <input id="inputTeksti" type="text" value={newPhone} placeholder="Puhelin"
                         onChange={({ target }) => setNewPhone(target.value)} />
                 </div>
-                <div>
-                    <input type="text" value={newFax} placeholder="Faksi"
-                        onChange={({ target }) => setNewFax(target.value)} />
-                </div>
 
-                <input type='submit' value='Tallenna' />
-                <input type='button' value='Takaisin' onClick={() => setMuokkaustila(false)} />
+                <input className="posNappi" type='submit' value='Tallenna' />
+                <input className="nappi" type='button' value='Takaisin' onClick={() => setMuokkaustila(false)} />
             </form>
         </div>
     )

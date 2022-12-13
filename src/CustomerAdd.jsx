@@ -105,8 +105,8 @@ const CustomerAdd = ({ setLisäystila, setIsPositive, setMessage, setShowMessage
                         onChange={({ target }) => setNewFax(target.value)} />
                 </div>
 
-                <input type='submit' value='Tallenna' />
-                <input type='button' value='Takaisin' onClick={() => setLisäystila(false)} />
+                <input className='posNappi' type='submit' value='Tallenna' />
+                <input className='nappi' type='button' value='Takaisin' onClick={() => setLisäystila(false)} />
             </form>
         </div>
     )

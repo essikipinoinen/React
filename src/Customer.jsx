@@ -5,6 +5,7 @@ import CustomerService from './services/Customer'
 const Customer = ({ customer, editCustomer, setIsPositive, setMessage, setShowMessage, reload, reloadNow }) => {
 
     const [showDetails, setShowDetails] = useState(false)
+    
 
     const deleteCustomer = (customer) => {
         let vastaus = window.confirm(`Poistetaanko asiakas ${customer.companyName}?`)
@@ -77,7 +78,7 @@ const Customer = ({ customer, editCustomer, setIsPositive, setMessage, setShowMe
                     </tbody>
                 </table>
                 <button className="nappi" onClick={() => editCustomer(customer)}>Muokkaa</button>
-                <button className="nappi" onClick={() => deleteCustomer(customer)}>Poista</button>
+                <button className="negNappi" onClick={() => deleteCustomer(customer)}>Poista</button>
             </div>}
         </div>
     )

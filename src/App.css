@@ -2,6 +2,30 @@
   text-align: center;
 }
 
+label {
+  font-weight: bold;
+  font-size: 14px;
+  padding-bottom: 5px;
+  display:block;
+  clear:both;
+}
+
+
+#edit {
+  text-align: center;
+  margin:auto;
+  width: 300px;
+}
+
+#inputTeksti {
+  width: 300px;
+}
+
+#editOne {
+  padding-bottom: 12px;
+  text-align: left;
+}
+
 .nappi {
   border-radius: 5px;
   margin-left: 10px;
@@ -11,11 +35,21 @@
   padding: 6px;
 }
 
-.tallennaNappi {
+.posNappi {
   border-radius: 5px;
   margin-left: 10px;
   font-size: 16px;
   background-color: rgb(0, 177, 29);
+  color: rgb(255, 255, 255);
+  padding: 6px;
+  margin-top: 15px;
+}
+
+.negNappi {
+  border-radius: 5px;
+  margin-left: 10px;
+  font-size: 16px;
+  background-color: rgb(225, 7, 40);
   color: rgb(255, 255, 255);
   padding: 6px;
   margin-top: 15px;
@@ -48,7 +82,7 @@
 }
 
 .posts {
-  background-color: #e1e8f8;
+  background-color: #f0f0f0;
   width: 800px;
   margin: 30px auto;
   padding: 20px 100px;
@@ -85,7 +119,7 @@
 }
 
 .customerDetails {
-  background-color: #e1e8f8;
+  background-color: #f0f0f0;
   width: 50%;
   margin: auto;
   margin-bottom: 50px;
